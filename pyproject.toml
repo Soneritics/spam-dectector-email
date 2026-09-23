@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spam-watcher"
+version = "0.1.0"
+description = "IMAP mail watcher that classifies forwarded emails via the Spam Detector Azure Function."
+requires-python = ">=3.11"
+dependencies = [
+    "imap-tools>=1.7",
+    "httpx>=0.27",
+    "pydantic-settings>=2.2",
+    "python-json-logger>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+spam-watcher = "spam_watcher.app:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

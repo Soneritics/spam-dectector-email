@@ -408,3 +408,17 @@ local.settings.json
 .specify/init-options.json
 .specify/integration.json
 .github/skills
+
+# --- Python / spam-watcher ---
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Environment / secrets (never commit real config)
+.env
+.env.*
+!.env.example

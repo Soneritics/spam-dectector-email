@@ -1,0 +1,8 @@
+services:
+  spam-watcher:
+    build: .
+    image: spam-watcher:latest
+    # The watcher must always run; restart on failure or reboot.
+    restart: unless-stopped
+    env_file:
+      - .env
